@@ -1,6 +1,15 @@
 package com.example.bdapimodulo6wallet.data.repository
 
+
+
 import android.content.Context
+import androidx.room.Room
+
+import com.example.bdapimodulo6wallet.data.local.WalletDatabase
+import com.example.bdapimodulo6wallet.data.local.entity.toTransactionDataResponse
+import com.example.bdapimodulo6wallet.data.local.entity.toTransactionEntity
+import com.example.bdapimodulo6wallet.data.local.entity.toUserEntity
+import com.example.bdapimodulo6wallet.data.local.entity.toUserInfoResponse
 import com.example.bdapimodulo6wallet.data.model.LoginRequest
 import com.example.bdapimodulo6wallet.data.model.TransactionDataRequest
 import com.example.bdapimodulo6wallet.data.model.User
@@ -8,25 +17,18 @@ import com.example.bdapimodulo6wallet.data.network.api.WalletApiService
 import com.example.bdapimodulo6wallet.data.network.retrofit.RetrofitHelper
 import com.example.bdapimodulo6wallet.data.response.AccountResponse
 import com.example.bdapimodulo6wallet.data.response.TransactionDataResponse
-import com.example.bdapimodulo6wallet.data.response.TransactionListResponse
 import com.example.bdapimodulo6wallet.data.response.UserInfoResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-/**
- * Implementación concreta de AlkeWalletRepository que interactúa con la API de la wallet digital.
- * @param context el contexto de la aplicación utilizado para crear el servicio API.
- */
 class AlkeWalletRepositoryImpl(context: Context) : AlkeWalletRepository {
 
     private val apiService: WalletApiService = RetrofitHelper.getInstance(context)
+    private val walletDatabase: WalletDatabase = Room.databaseBuilder(
+        context,
+        WalletDatabase::class.java, "wallet-database"
+    ).build()
 
-    /**
-     * Inicia sesión en la aplicación de la wallet digital.
-     * @param email dirección de correo electrónico del usuario.
-     * @param password contraseña del usuario.
-     * @return el token de acceso si el inicio de sesión es exitoso.
-     */
     override suspend fun login(email: String, password: String): String {
         return withContext(Dispatchers.IO) {
             val loginRequest = LoginRequest(email, password)
@@ -35,20 +37,14 @@ class AlkeWalletRepositoryImpl(context: Context) : AlkeWalletRepository {
         }
     }
 
-    /**
-     * Obtiene el perfil del usuario actualmente autenticado.
-     * @return la información del perfil del usuario.
-     */
     override suspend fun getProfile(): UserInfoResponse {
         return withContext(Dispatchers.IO) {
-            apiService.myProfile()
+            val profile = apiService.myProfile()
+            walletDatabase.userDao().insertUser(profile.toUserEntity())
+            profile
         }
     }
 
-    /**
-     * Obtiene una lista de todos los usuarios en el sistema.
-     * @return una lista de usuarios.
-     */
     override suspend fun getAllUsers(): MutableList<User> {
         return withContext(Dispatchers.IO) {
             val response = apiService.getAllUsers()
@@ -56,60 +52,61 @@ class AlkeWalletRepositoryImpl(context: Context) : AlkeWalletRepository {
         }
     }
 
-    /**
-     * Obtiene las cuentas asociadas al usuario actualmente autenticado.
-     * @return una lista de respuestas de cuenta.
-     */
     override suspend fun myAccount(): MutableList<AccountResponse> {
         return withContext(Dispatchers.IO) {
             apiService.myAccount()
         }
     }
 
-    /**
-     * Obtiene la información de una cuenta específica por su ID.
-     * @param id identificador de la cuenta.
-     * @return la información de la cuenta.
-     */
     override suspend fun getAccountById(id: Int): AccountResponse {
         return withContext(Dispatchers.IO) {
             apiService.getAccountById(id)
         }
     }
 
-    /**
-     * Obtiene la información de un usuario específico por su ID.
-     * @param id identificador del usuario.
-     * @return la información del usuario.
-     */
+    override suspend fun myTransactions(): List<TransactionDataResponse> {
+        return withContext(Dispatchers.IO) {
+            val response = apiService.myTransactions()
+            response.data // Asegúrate de que 'data' es una lista de 'TransactionDataResponse'
+        }
+    }
+
     override suspend fun getUserById(id: Int): UserInfoResponse {
         return withContext(Dispatchers.IO) {
             apiService.getUserById(id)
         }
     }
 
-    /**
-     * Obtiene las transacciones realizadas por el usuario actualmente autenticado.
-     * @return una respuesta con la lista de transacciones.
-     */
-    override suspend fun myTransactions(): TransactionListResponse {
-        return withContext(Dispatchers.IO) {
-            apiService.myTransactions()
+    override suspend fun saveTransaction(transaction: TransactionDataResponse) {
+        withContext(Dispatchers.IO) {
+            walletDatabase.transactionDao().insertTransaction(transaction.toTransactionEntity())
         }
     }
 
-    /**
-     * Realiza una transacción de ingreso de dinero en una cuenta específica.
-     * @param accountId identificador de la cuenta.
-     * @param transactionRequest objeto de solicitud de transacción que contiene los detalles de la transacción.
-     * @return respuesta con los detalles de la transacción realizada.
-     */
-    override suspend fun ingresarDinero(accountId: Int, transactionRequest: TransactionDataRequest): TransactionDataResponse {
+    override suspend fun getAllTransactions(): List<TransactionDataResponse> {
         return withContext(Dispatchers.IO) {
+            walletDatabase.transactionDao().getAllTransactions().map { it.toTransactionDataResponse() }
+        }
+    }
+
+    override suspend fun saveUserProfile(userProfile: UserInfoResponse) {
+        withContext(Dispatchers.IO) {
+            walletDatabase.userDao().insertUser(userProfile.toUserEntity())
+        }
+    }
+
+    override suspend fun getUserProfile(): UserInfoResponse? {
+        return withContext(Dispatchers.IO) {
+            walletDatabase.userDao().getUser()?.toUserInfoResponse()
+        }
+    }
+
+    override suspend fun ingresarDinero(accountId: Int, type: String, concept: String, amount: Int) {
+        withContext(Dispatchers.IO) {
+            val transactionRequest = TransactionDataRequest(type, concept, amount)
             apiService.ingresarDinero(accountId, transactionRequest)
         }
     }
-
     /**
      * Crea un nuevo usuario en el sistema.
      * @param user objeto de respuesta de usuario que contiene los detalles del nuevo usuario.

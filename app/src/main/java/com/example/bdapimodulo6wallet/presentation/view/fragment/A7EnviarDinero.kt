@@ -75,7 +75,7 @@ class A7EnviarDinero : Fragment() {
                 Toast.makeText(requireContext(), "Por favor, ingresa una cantidad válida y selecciona un usuario.", Toast.LENGTH_SHORT).show()
             } else {
                 Log.d("A7EnviarDineroFragment", "Iniciando envío de dinero: Usuario ID: $userId, Cantidad: $amount, Concepto: $concept")
-                viewModel.ingresarDinero(userId, "payment", concept, amount)
+                viewModel.enviarDinero(userId, "payment", concept, amount)
             }
         }
 

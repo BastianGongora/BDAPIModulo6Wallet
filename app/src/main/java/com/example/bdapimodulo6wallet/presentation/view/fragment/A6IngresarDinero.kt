@@ -1,5 +1,6 @@
 package com.example.bdapimodulo6wallet.presentation.view.fragment
 
+
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -70,7 +71,7 @@ class A6IngresarDinero : Fragment() {
             } else {
                 viewModel.userAccount.value?.let { userAccount ->
                     Log.d("A6IngresarDineroFragment", "Iniciando ingreso de dinero: Cantidad: $amount, Concepto: $concept")
-                    viewModel.ingresarDinero(userAccount.id, "topup", concept, amount)
+                    viewModel.enviarDinero(userAccount.id, "topup", concept, amount)
                 }
             }
         }

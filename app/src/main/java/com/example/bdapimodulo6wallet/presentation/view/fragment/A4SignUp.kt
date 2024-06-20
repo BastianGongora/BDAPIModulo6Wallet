@@ -1,5 +1,6 @@
 package com.example.bdapimodulo6wallet.presentation.view.fragment
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.example.apibdwalletmodulo6.presentation.viewmodel.SignUpViewModel
 import com.example.apibdwalletmodulo6.presentation.viewmodel.SignUpViewModelFactory
 import com.example.bdapimodulo6wallet.R
 import com.example.bdapimodulo6wallet.data.repository.AlkeWalletRepositoryImpl
+
 import com.example.bdapimodulo6wallet.databinding.FragmentA4SignUpBinding
 /**
  * A4SignUp es un fragmento que maneja la lógica de la interfaz de usuario para el registro de nuevos usuarios.
