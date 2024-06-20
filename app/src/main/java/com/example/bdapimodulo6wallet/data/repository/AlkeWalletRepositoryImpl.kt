@@ -3,6 +3,7 @@ package com.example.bdapimodulo6wallet.data.repository
 
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Room
 
 import com.example.bdapimodulo6wallet.data.local.WalletDatabase
@@ -23,7 +24,7 @@ import kotlinx.coroutines.withContext
 
 class AlkeWalletRepositoryImpl(context: Context) : AlkeWalletRepository {
 
-    private val apiService: WalletApiService = RetrofitHelper.getInstance(context)
+    var apiService: WalletApiService = RetrofitHelper.getInstance(context)
     private val walletDatabase: WalletDatabase = Room.databaseBuilder(
         context,
         WalletDatabase::class.java, "wallet-database"
@@ -67,7 +68,7 @@ class AlkeWalletRepositoryImpl(context: Context) : AlkeWalletRepository {
     override suspend fun myTransactions(): List<TransactionDataResponse> {
         return withContext(Dispatchers.IO) {
             val response = apiService.myTransactions()
-            response.data // Asegúrate de que 'data' es una lista de 'TransactionDataResponse'
+            response.data
         }
     }
 
@@ -77,11 +78,6 @@ class AlkeWalletRepositoryImpl(context: Context) : AlkeWalletRepository {
         }
     }
 
-    override suspend fun saveTransaction(transaction: TransactionDataResponse) {
-        withContext(Dispatchers.IO) {
-            walletDatabase.transactionDao().insertTransaction(transaction.toTransactionEntity())
-        }
-    }
 
     override suspend fun getAllTransactions(): List<TransactionDataResponse> {
         return withContext(Dispatchers.IO) {
@@ -107,6 +103,12 @@ class AlkeWalletRepositoryImpl(context: Context) : AlkeWalletRepository {
             apiService.ingresarDinero(accountId, transactionRequest)
         }
     }
+    override suspend fun saveTransaction(transaction: TransactionDataResponse) {
+        withContext(Dispatchers.IO) {
+            walletDatabase.transactionDao().insertTransaction(transaction.toTransactionEntity())
+        }
+    }
+
     /**
      * Crea un nuevo usuario en el sistema.
      * @param user objeto de respuesta de usuario que contiene los detalles del nuevo usuario.

@@ -40,35 +40,48 @@ android {
 }
 
 dependencies {
-//MVVM
+    // ViewModel
+    implementation (libs.androidx.lifecycle.viewmodel.ktx.v282)
 
-// ViewModel
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    // LiveData
+    implementation (libs.androidx.lifecycle.livedata.ktx.v282)
 
-// LiveData
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-//Retrofit
+    // Retrofit
     implementation (libs.retrofit)
     implementation (libs.logging.interceptor)
-//Conversor
+
+    // Conversor
     implementation (libs.converter.gson)
-// ROOM
 
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    ksp(libs.androidx.room.compiler)
+    // ROOM
+    implementation (libs.androidx.room.runtime)
+    implementation (libs.androidx.room.ktx)
+    implementation(libs.core.ktx)
+    implementation(libs.androidx.junit.ktx)
+    ksp (libs.androidx.room.compiler)
 
-//Picasso
-    implementation (libs.picasso)
+    // Navigation
+    implementation (libs.androidx.navigation.fragment.ktx)
+    implementation (libs.androidx.navigation.ui.ktx)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // Picasso
+    implementation (libs.picasso.v271828)
+
+    // Testing
+    testImplementation (libs.mockito.core.v530)
+    testImplementation (libs.kotlinx.coroutines.test.v173)
+    testImplementation (libs.androidx.core.testing)
+
+    androidTestImplementation (libs.androidx.rules.v150)
+    androidTestImplementation (libs.androidx.junit)
+    androidTestImplementation (libs.androidx.espresso.core.v340)
+    androidTestImplementation (libs.androidx.runner.v110)
+    androidTestUtil (libs.androidx.orchestrator)
+    implementation (libs.androidx.core.ktx)
+    implementation (libs.androidx.appcompat)
+    implementation (libs.material)
+    implementation (libs.androidx.activity.ktx)
+    implementation (libs.androidx.constraintlayout)
+
+    testImplementation (libs.junit)
 }

@@ -6,14 +6,14 @@ import com.example.bdapimodulo6wallet.data.response.TransactionDataResponse
 
 @Entity(tableName = "transactions")
 data class TransactionEntity(
-    @PrimaryKey val id: Int,
-    val amount: Int,
-    val concept: String,
-    val date: String,
-    val type: String,
-    val accountId: Int,
-    val userId: Int,
-    val toAccountId: Int
+        @PrimaryKey val id: Int,
+        val amount: Int,
+        val concept: String,
+        val date: String,
+        val type: String,
+        val accountId: Int,
+        val userId: Int,
+        val toAccountId: Int
 )
 
 fun TransactionDataResponse.toTransactionEntity(): TransactionEntity {
@@ -25,7 +25,7 @@ fun TransactionDataResponse.toTransactionEntity(): TransactionEntity {
         type = this.type,
         accountId = this.accountId,
         userId = this.userId,
-        toAccountId = this.to_account_id // Asegúrate de que el nombre del campo coincida
+        toAccountId = this.to_account_id
     )
 }
 
@@ -38,6 +38,6 @@ fun TransactionEntity.toTransactionDataResponse(): TransactionDataResponse {
         type = this.type,
         accountId = this.accountId,
         userId = this.userId,
-        to_account_id = this.toAccountId // Asegúrate de que el nombre del campo coincida
+        to_account_id = this.toAccountId
     )
 }
