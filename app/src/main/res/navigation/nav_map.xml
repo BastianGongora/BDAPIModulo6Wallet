@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_map"
+    app:startDestination="@id/a1SplashScreen">
+
+    <fragment
+        android:id="@+id/a1SplashScreen"
+        android:name="com.example.bdapimodulo6wallet.presentation.view.fragment.A1SplashScreen"
+        android:label="fragment_a1_splash_screen"
+        tools:layout="@layout/fragment_a1_splash_screen" >
+        <action
+            android:id="@+id/action_a1SplashScreen_to_a2SignUpLogin"
+            app:destination="@id/a2SignUpLogin" />
+    </fragment>
+    <fragment
+        android:id="@+id/a2SignUpLogin"
+        android:name="com.example.bdapimodulo6wallet.presentation.view.fragment.A2SignUpLogin"
+        android:label="fragment_a2_sign_up_login"
+        tools:layout="@layout/fragment_a2_sign_up_login" >
+        <action
+            android:id="@+id/action_a2SignUpLogin_to_a4SignUp"
+            app:destination="@id/a4SignUp" />
+        <action
+            android:id="@+id/action_a2SignUpLogin_to_a3Login"
+            app:destination="@id/a3Login" />
+    </fragment>
+    <fragment
+        android:id="@+id/a3Login"
+        android:name="com.example.bdapimodulo6wallet.presentation.view.fragment.A3Login"
+        android:label="fragment_a3_login"
+        tools:layout="@layout/fragment_a3_login" >
+        <action
+            android:id="@+id/action_a3Login_to_a5Home"
+            app:destination="@id/a5Home" />
+    </fragment>
+    <fragment
+        android:id="@+id/a4SignUp"
+        android:name="com.example.bdapimodulo6wallet.presentation.view.fragment.A4SignUp"
+        android:label="fragment_a4_sign_up"
+        tools:layout="@layout/fragment_a4_sign_up" >
+        <action
+            android:id="@+id/action_a4SignUp_to_a3Login"
+            app:destination="@id/a3Login" />
+    </fragment>
+    <fragment
+        android:id="@+id/a5Home"
+        android:name="com.example.bdapimodulo6wallet.presentation.view.fragment.A5Home"
+        android:label="fragment_a5_home"
+        tools:layout="@layout/fragment_a5_home" >
+        <action
+            android:id="@+id/action_a5Home_to_a6IngresarDinero"
+            app:destination="@id/a6IngresarDinero" />
+        <action
+            android:id="@+id/action_a5Home_to_a7EnviarDinero"
+            app:destination="@id/a7EnviarDinero" />
+        <action
+            android:id="@+id/action_a5Home_to_a8MiPerfil"
+            app:destination="@id/a8MiPerfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/a6IngresarDinero"
+        android:name="com.example.bdapimodulo6wallet.presentation.view.fragment.A6IngresarDinero"
+        android:label="fragment_a6_ingresar_dinero"
+        tools:layout="@layout/fragment_a6_ingresar_dinero" >
+        <action
+            android:id="@+id/action_a6IngresarDinero_to_a5Home"
+            app:destination="@id/a5Home" />
+    </fragment>
+    <fragment
+        android:id="@+id/a7EnviarDinero"
+        android:name="com.example.bdapimodulo6wallet.presentation.view.fragment.A7EnviarDinero"
+        android:label="fragment_a7_enviar_dinero"
+        tools:layout="@layout/fragment_a7_enviar_dinero" >
+        <action
+            android:id="@+id/action_a7EnviarDinero_to_a5Home"
+            app:destination="@id/a5Home" />
+    </fragment>
+    <fragment
+        android:id="@+id/a8MiPerfil"
+        android:name="com.example.bdapimodulo6wallet.presentation.view.fragment.A8MiPerfil"
+        android:label="fragment_a8_mi_perfil"
+        tools:layout="@layout/fragment_a8_mi_perfil" />
+</navigation>

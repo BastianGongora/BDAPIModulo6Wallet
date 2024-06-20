@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_login"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.view.fragment.A4SignUp">
+
+    <TextView
+        android:id="@+id/xt_titulo_signup"
+        android:layout_width="306dp"
+        android:layout_height="89dp"
+        android:layout_marginHorizontal="5dp"
+        android:fontFamily="@font/jua"
+        android:text="Registrarse y empezar a transferir"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.124" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="426dp"
+        android:layout_height="441dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/xt_titulo_signup"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/jua"
+            android:text="Nombre"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextText3"
+            android:layout_width="315dp"
+            android:layout_height="49dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/txt_blanco"
+            android:fontFamily="@font/jua"
+            android:inputType="text"
+            android:paddingStart="14sp"
+            android:hint="Ingresa el nombre"
+            android:textColor="#B5B5B5"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/jua"
+            android:text="Apellido"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextText4"
+            android:layout_width="315dp"
+            android:layout_height="49dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/txt_blanco"
+            android:fontFamily="@font/jua"
+            android:inputType="text"
+            android:paddingStart="14sp"
+            android:hint="Ingresar apellido"
+            android:textColor="#B5B5B5"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/jua"
+            android:text="Email"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextText5"
+            android:layout_width="315dp"
+            android:layout_height="49dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/txt_blanco"
+            android:fontFamily="@font/jua"
+            android:inputType="text"
+            android:paddingStart="14sp"
+            android:hint="Ingresar Email"
+            android:textColor="#B5B5B5"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/jua"
+            android:text="Contraseña"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextText6"
+            android:layout_width="315dp"
+            android:layout_height="49dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/txt_blanco"
+            android:fontFamily="@font/jua"
+            android:inputType="textPassword"
+            android:paddingStart="14sp"
+            android:hint="Ingresar Contraseña"
+            android:textColor="#B5B5B5"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/jua"
+            android:text="Reingresar Contraseña"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextText7"
+            android:layout_width="315dp"
+            android:layout_height="49dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/txt_blanco"
+            android:fontFamily="@font/jua"
+            android:inputType="textPassword"
+            android:paddingStart="14sp"
+            android:hint="Reingresar Contraseña"
+            android:textColor="#B5B5B5"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_ya_cuenta_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jua"
+        android:text="¿Ya tienes una cuenta?"
+        android:textColor="#1A87DD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.74" />
+
+    <Button
+        android:id="@+id/btn_crear_signup"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_celeste"
+        android:text="Crear Cuenta"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.273" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

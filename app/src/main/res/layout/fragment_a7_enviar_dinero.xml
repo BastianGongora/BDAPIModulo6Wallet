@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.view.fragment.A7EnviarDinero">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/btnVolverRequest"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:navigationIconTint="@color/black"
+            app:title="Ingresar dinero"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/ToolbarStyle" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#57000000" />
+
+        <Spinner
+            android:id="@+id/spinnerUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:minHeight="48dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15sp"
+            android:layout_marginEnd="15sp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jua"
+                android:text="Cantidad a ingresar"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <EditText
+                android:id="@+id/txtcantidadingresar"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/txt_ingreso"
+                android:fontFamily="@font/jua"
+                android:inputType="text"
+                android:paddingStart="14sp"
+                android:textColor="#2196F3"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15sp"
+            android:layout_marginEnd="15sp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jua"
+                android:paddingTop="25sp"
+                android:paddingBottom="10sp"
+                android:text="Notas de transferencia"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <EditText
+                android:id="@+id/txtnotas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/txt_blanco"
+                android:fontFamily="@font/jua"
+                android:hint="Agregar Notas de transferencia"
+                android:inputType="textMultiLine"
+                android:gravity="start|top"
+                android:paddingLeft="15sp"
+                android:paddingTop="14dp"
+                android:lines="10" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnID"
+                android:layout_width="317dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/boton_verde"
+                android:drawableLeft="@drawable/send_icon"
+                android:drawablePadding="4.38dp"
+                android:gravity="center_vertical"
+                android:paddingStart="85dp"
+                android:text="Enviar Dinero"
+                android:textColor="#263238"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
