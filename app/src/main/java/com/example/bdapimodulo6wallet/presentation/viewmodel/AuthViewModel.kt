@@ -76,13 +76,9 @@ class AuthViewModel(private val repository: AlkeWalletRepository, private val co
         viewModelScope.launch {
             try {
                 val token = repository.login(email, password)
-                if (token != null) {
-                    _loginResponse.postValue(token)
-                    saveToken(token)
-                    getProfile() // Intentar obtener el perfil después de guardar el token
-                } else {
-                    _errorMessage.postValue("Credenciales inválidas")
-                }
+                _loginResponse.postValue(token)
+                saveToken(token)
+                getProfile() // Intentar obtener el perfil después de guardar el token
             } catch (e: Exception) {
                 _errorMessage.postValue("Fallo en ingreso de sesión: ${e.message}")
             }

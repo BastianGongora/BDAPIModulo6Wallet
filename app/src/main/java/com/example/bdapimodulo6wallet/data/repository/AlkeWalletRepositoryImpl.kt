@@ -25,7 +25,7 @@ import kotlinx.coroutines.withContext
 class AlkeWalletRepositoryImpl(context: Context) : AlkeWalletRepository {
 
     var apiService: WalletApiService = RetrofitHelper.getInstance(context)
-    private val walletDatabase: WalletDatabase = Room.databaseBuilder(
+    var walletDatabase: WalletDatabase = Room.databaseBuilder(
         context,
         WalletDatabase::class.java, "wallet-database"
     ).build()

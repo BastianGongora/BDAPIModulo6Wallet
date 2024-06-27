@@ -14,7 +14,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -40,48 +39,45 @@ android {
 }
 
 dependencies {
-    // ViewModel
-    implementation (libs.androidx.lifecycle.viewmodel.ktx.v282)
-
-    // LiveData
-    implementation (libs.androidx.lifecycle.livedata.ktx.v282)
-
-    // Retrofit
+//MVVM
+// ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+// LiveData
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+//Retrofit
+    implementation (libs.retrofit.v290)
     implementation (libs.retrofit)
+    implementation (libs.okhttp)
     implementation (libs.logging.interceptor)
-
-    // Conversor
+//Conversor
+    implementation (libs.gson)
     implementation (libs.converter.gson)
-
-    // ROOM
-    implementation (libs.androidx.room.runtime)
-    implementation (libs.androidx.room.ktx)
-    implementation(libs.core.ktx)
-    implementation(libs.androidx.junit.ktx)
-    ksp (libs.androidx.room.compiler)
-
-    // Navigation
-    implementation (libs.androidx.navigation.fragment.ktx)
-    implementation (libs.androidx.navigation.ui.ktx)
-
-    // Picasso
+// ROOM
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.junit.ktx)
+    ksp(libs.androidx.room.compiler)
+//Picasso
     implementation (libs.picasso.v271828)
-
-    // Testing
-    testImplementation (libs.mockito.core.v530)
+//Test
+    androidTestImplementation (libs.androidx.room.testing)
+    implementation (libs.kotlinx.coroutines.android)
     testImplementation (libs.kotlinx.coroutines.test.v173)
     testImplementation (libs.androidx.core.testing)
+    testImplementation (libs.mockk)
+    androidTestImplementation (libs.androidx.junit.v120)
+    androidTestImplementation (libs.androidx.runner.v160)
+    androidTestImplementation (libs.androidx.rules.v160)
+    testImplementation (libs.robolectric)
 
-    androidTestImplementation (libs.androidx.rules.v150)
-    androidTestImplementation (libs.androidx.junit)
-    androidTestImplementation (libs.androidx.espresso.core.v340)
-    androidTestImplementation (libs.androidx.runner.v110)
-    androidTestUtil (libs.androidx.orchestrator)
-    implementation (libs.androidx.core.ktx)
-    implementation (libs.androidx.appcompat)
-    implementation (libs.material)
-    implementation (libs.androidx.activity.ktx)
-    implementation (libs.androidx.constraintlayout)
-
-    testImplementation (libs.junit)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
